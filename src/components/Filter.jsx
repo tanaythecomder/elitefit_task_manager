@@ -25,8 +25,8 @@ const Filter = ({ isOpen, onClose, priority, status, setPriority, setStatus }) =
                         <label htmlFor="status"> Status</label>
                         <select name="status" as="select" className="h-10 border" value={status} onChange={(e)=>setStatus(e.target.value)} >
                             <option value="">-Select-</option>
-                            <option value="0">Pending</option>
-                            <option value="1">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
 
                         </select>
 
