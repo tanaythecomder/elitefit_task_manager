@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Card = ({ task, id, setTask }) => {
-  const { onOpen, onClose, isOpen } = useDisclouse()
+  const  [isOpen ,onClose, onOpen ]= useDisclouse()
   const [completed, setCompleted] = useState(task.status !== "pending");
 
   const handleCheckboxChange = () => {
@@ -18,6 +18,7 @@ const Card = ({ task, id, setTask }) => {
     console.log(taskList);
     
     setCompleted(!completed);
+    setTask(taskList)
   };
 
   const deletetaskList = async () => {
@@ -29,7 +30,7 @@ const Card = ({ task, id, setTask }) => {
   return (
     <>
       { }
-      <div className={"h-[120px]  rounded-lg  flex items-center gap-1 justify-around p-1 " + (task.prioritylevel == 2 ? "bg-red-300" : task.prioritylevel == 1 ? "bg-amber-500" : "bg-green-300")}>
+      <div className={"h-[140px]  rounded-lg  flex items-center gap-1 justify-around p-1 " + (task.prioritylevel == 2 ? "bg-red-300" : task.prioritylevel == 1 ? "bg-amber-500" : "bg-green-300")}>
         <MdOutlineContacts className='text-4xl ml-1 text-orange' />
         <div className='flex-grow ml-2'>
           <h1 className=' text-lg '>{task.title}</h1>

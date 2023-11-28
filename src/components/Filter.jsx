@@ -4,6 +4,7 @@ import Modals from './Modals'
 
 const Filter = ({ isOpen, onClose, priority, status, setPriority, setStatus }) => {
 
+    
 
     return (
 

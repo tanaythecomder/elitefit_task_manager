@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Nocontact = () => {
+const Nocontact = ({text}) => {
   return (
     
         <div className='flex items-center justify-center h-screen'>
@@ -8,7 +8,7 @@ const Nocontact = () => {
 
             {/* <img src="/CONTACT.png" alt="" /> */}
             <div className='text-white pt-3 text-bold'>
-            No Pending Tasks
+            {text}
             </div>
             
             </div>

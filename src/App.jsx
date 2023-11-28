@@ -12,25 +12,28 @@ import Nocontact from "./components/Nocontact";
 import Filter from "./components/Filter";
 import useDisclousefilter from "./hooks/useDislousefilter";
 const App = () => {
-  const [taskList, settaskList] = useState([]);
+  const [taskList, setTaskList] = useState([]);
   const [isOpen, onClose, onOpen] = useDisclouse();
   const [isOpenFilter, onCloseFilter, onOpenFilter] = useDisclousefilter();
-  const [trackPriority, setPriority] = useState(-1);
+  const [trackPriority, setPriority] = useState("");
   const [trackStatus, setStatus] = useState("");
   const [searchquery, setSearchquery] = useState("");
+  const [filterButton, setFilterButton] = useState(0);
   // const [searcheddata, setSearcheddata] = useState()
 
   // console.log(isOpen)
 
 
   // useEffect(() => {
-  //   const taskList = JSON.parse(localStorage.getItem("taskList") || "[]")
-  //   settaskList(taskList)
-  // }, []);
+  //   let data = JSON.parse(localStorage.getItem("taskList") || "[]")
+  //   console.log(data," usert")
+  //   setTaskList(data)
+
+  // },[]);
+
   useEffect(() => {
     handleSearch()
-    console.log("indiandin")
-  }, [searchquery, trackPriority, trackStatus])
+  }, [searchquery, filterButton])
 
   const handleSearch = () => {
 
@@ -39,23 +42,16 @@ const App = () => {
 
     const taskList = JSON.parse(localStorage.getItem("taskList") || "[]");
     // console.log(taskList)
-
-    // console.log(searchquery)
+    // console.log("1", searchquery);
+    // console.log(trackPriority);
+    // console.log(trackStatus);
     const newtaskList = taskList.filter(task => {
-
-
-
       return ((task.title.toLowerCase().includes(searchquery.toLowerCase()))
         && (trackPriority === "" ? true : task.prioritylevel === trackPriority) && (trackStatus === "" ? true : task.status === trackStatus)
       )
 
     })
-
-    //  searchquery.trim() !== ""? settaskList(newtaskList):settaskList(taskList)
-    settaskList(newtaskList)
-
-
-
+    setTaskList(newtaskList);
   }
 
   return (
@@ -74,19 +70,58 @@ const App = () => {
           <IoFilterSharp className="text-white cursor-pointer text-4xl ml-2" onClick={onOpenFilter} />
           <AiOutlineUserAdd className="text-white cursor-pointer text-4xl ml-2" onClick={onOpen} />
         </div>
+        {console.log(taskList.length + "taslList")}
         {
-          taskList.length == 0 ?
-            <Nocontact />
+
+          taskList.length === 0 ?
+            trackStatus || searchquery || trackPriority ? <Nocontact text={"No result found"} /> : <Nocontact text={"No tasks"} />
             :
             <div>
-              <div className="flex flex-col mt-3 ">
-                {taskList.map((doc) => {
-                  return (
-                    <div key={doc.id} className="mt-2">
-                      <Card task={doc} id={doc.id} setTask={settaskList} />
+
+              <div className="">
+                <hr className=" mt-10 f" />
+                <div className="font-bold">Upcoming Tasks</div>
+
+              </div>
+
+              <div className="flex flex-col mt-3">
+                {taskList
+                  .filter((doc) => new Date(doc.duedate) > new Date() && doc.status === 'pending')
+                  .map((filteredTask) => (
+                    <div key={filteredTask.id} className="mt-2">
+                      <Card task={filteredTask} id={filteredTask.id} setTask={setTaskList} />
                     </div>
-                  );
-                })}
+                  ))}
+              </div>
+              <div className="">
+                <hr className=" mt-10 f" />
+                <div className="font-bold">Completed</div>
+
+              </div>
+
+              <div className="flex flex-col mt-3">
+                {taskList
+                  .filter((doc) => doc.status === 'completed')
+                  .map((filteredTask) => (
+                    <div key={filteredTask.id} className="mt-2">
+                      <Card task={filteredTask} id={filteredTask.id} setTask={setTaskList} />
+                    </div>
+                  ))}
+              </div>
+              <div className="">
+                <hr className=" mt-10 f" />
+                <div className="font-bold">Overdue</div>
+
+              </div>
+
+              <div className="flex flex-col mt-3">
+                {taskList
+                  .filter((doc) => new Date(doc.duedate) <= new Date() && doc.status === 'pending')
+                  .map((filteredTask) => (
+                    <div key={filteredTask.id} className="mt-2">
+                      <Card task={filteredTask} id={filteredTask.id} setTask={setTaskList} />
+                    </div>
+                  ))}
               </div>
             </div>
         }
@@ -95,7 +130,7 @@ const App = () => {
         {console.log(trackPriority)}
 
 
-        <AddorUpdatecontact isOpen={isOpen} onClose={onClose} isUpdate={false} setTask={settaskList} />
+        <AddorUpdatecontact isOpen={isOpen} onClose={onClose} isUpdate={false} setTask={setTaskList} />
         <Filter isOpen={isOpenFilter} onClose={onCloseFilter} priority={trackPriority} status={trackStatus}
           setPriority={setPriority}
           setStatus={setStatus}
