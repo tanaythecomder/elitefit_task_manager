@@ -1,6 +1,9 @@
-Snapshot of UI
+
 ![image](https://github.com/tanaythecomder/elitefit_task_manager/assets/105505153/c4507a0f-1eb4-4791-9759-9f6d5698001b)
 
+#Snapshot of UI
+
+Demo Link - 
 
 
 
