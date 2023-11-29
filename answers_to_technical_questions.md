@@ -36,6 +36,6 @@ function App() {
 }
 
 ```
-3 - I have no great experience in doing so, but I do some methods like implementing A/B testing to compare the performance of different code versions in a production-like environment, also I did a course on devOps so I will try to Collaborate with team members, including backend developers, database administrators, and DevOps engineers, and try to examine database queries for slow-performing queries and try optimizing those queries.
+3 - I have no great experience in doing so, but I do know some methods like implementing A/B testing to compare the performance of different code versions in a production-like environment, also I did a course on devOps and the culture or the concept showcase good practice for monitoring, also I will try to Collaborate with team members, including backend developers, database administrators, and DevOps engineers, and try to examine database queries for slow-performing queries and try optimizing those queries.
 
 4-I will add redux for managing state, for editing task card, and for some several different functionality also, actually it was a little bit lengthy procedure for editing without using redux or (context and reduce hooks) and I used basic logic to implement as i not used any database just used localstorage, also I will try to add some database like mongoDB, firestore/firebase etc, i can also make UI more interesting and classy but there was not enough time to made cool UI
