@@ -18,7 +18,7 @@ const App = () => {
   const [trackPriority, setPriority] = useState("");
   const [trackStatus, setStatus] = useState("");
   const [searchquery, setSearchquery] = useState("");
-  const [filterButton, setFilterButton] = useState(0);
+  // const [filterButton, setFilterButton] = useState(0);
   // const [searcheddata, setSearcheddata] = useState()
 
   // console.log(isOpen)
@@ -33,7 +33,7 @@ const App = () => {
 
   useEffect(() => {
     handleSearch()
-  }, [searchquery, filterButton])
+  }, [searchquery, trackPriority,trackStatus])
 
   const handleSearch = () => {
 
@@ -80,7 +80,7 @@ const App = () => {
 
               <div className="">
                 <hr className=" mt-10 f" />
-                <div className="font-bold">Upcoming Tasks</div>
+                <div className="font-bold text-white">Upcoming Tasks</div>
 
               </div>
 
@@ -95,7 +95,7 @@ const App = () => {
               </div>
               <div className="">
                 <hr className=" mt-10 f" />
-                <div className="font-bold">Completed</div>
+                <div className="font-bold text-white">Completed</div>
 
               </div>
 
@@ -110,7 +110,7 @@ const App = () => {
               </div>
               <div className="">
                 <hr className=" mt-10 f" />
-                <div className="font-bold">Overdue</div>
+                <div className="font-bold text-white">Overdue</div>
 
               </div>
 
