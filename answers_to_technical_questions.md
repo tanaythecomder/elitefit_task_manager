@@ -1,4 +1,4 @@
-1- I spend like 4-5 hours on completing this task since I made the UI not very complex, I focused more on adding functionality.
+1- I spend like 4-5 hours on completing this task since I made the UI not very complex, I was focused more on adding functionality.
 2 - In the most recent version of React (React 18), a groundbreaking feature called Automatic Batching has been introduced. Automatic Batching o ptimizes the rendering process by grouping together all state modifications made using event handlers, preventing unnecessary rendering steps.
 ```
     // Earlier React version without Automatic Batching
